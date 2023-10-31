@@ -6,7 +6,7 @@ import CloudForm from "../components/CloudForm";
 import { useFetch } from "../services/useFetch";
 
 function Worldcloud() {
-  const urlApi = process.env.API_URL;
+  const urlApi = "https://crb-quizz.vercel.app/wordcloud";
   const data = useFetch(urlApi);
   var words;
 
