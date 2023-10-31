@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-color: white;
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flashcard-viewer {
+  position: relative;
+  width: 250px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+
+  box-shadow: 0px 4px 22px -1px rgba(0, 0, 0, 0.25);
+}
+
+.flashcard-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 320px;
+  display: flex;
+
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.back {
+  transform: rotateY(180deg);
+  z-index: -9;
+  transition: transform 0.6s;
+}
+
+.front {
+  transform: rotateY(0);
+  z-index: 0;
+  transition: transform 0.6s;
+}
+
+.front-to-back {
+  transform: rotateY(180deg);
+  transition: transform 0.6s;
+}
+
+.back-to-front {
+  transform: rotateY(180deg);
+  z-index: 1;
+  transition: transform 0.6s;
+}
+
+.flashcard-item {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  background-color: #e2f2f3;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
+}
+
+.flashcard-feedback {
+  height: 82%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 11px 11px 0 0;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 16px;
+}
+.wrong {
+  background-color: #fae6ea;
+}
+.correct {
+  background-color: #e2eddd;
+}
+
+.input-response {
+  border: none;
+  border-bottom: 2px rgb(109, 109, 109) solid;
+  padding: 5px;
+  text-align: center;
+  font-size: 18px;
+  width: 80%;
+}
+
+.flashcard-bottom {
+  padding-top: 10px;
+  background-color: white;
+}
+
+.button-primary {
+  padding: 7px 24px;
+  border-radius: 20px;
+  border: none;
+  background-color: #0e1447;
+  color: white;
+  font-weight: 700;
+  margin: 10px 0 5px 0;
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.button-primary:hover {
+  background-color: #0b103d;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+
+.input-style-2 {
+  border: none;
+  border: 2px rgb(109, 109, 109) solid;
+  padding: 5px;
+  text-align: center;
+  font-size: 22px;
+  width: 80%;
+}
+
+.button-red {
+  padding: 10px 30px;
+  border: none;
+  background-color: #ed1c24;
+  color: white;
+  font-weight: 700;
+  margin: 10px 0 5px 0;
+  font-size: 20px;
+  transition: transform 0.2s;
+}
+
+.button-red:hover {
+  background-color: #bf181e;
+  transition: transform 0.2s;
+}
+
+:focus {
+  outline: none; /* removes the default outline around the element when it receives focus */
+}
+
+.fade-out {
+  animation-name: fade;
+  animation-duration: 2s;
+  opacity: 0;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+
+.scoreCard {
+  position: relative;
+  top: -370px;
+  width: 250px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(243, 243, 243);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 18px;
+  z-index: -99;
+  opacity: 0;
+}
+
+.indication {
+  color: rgb(190, 190, 190);
+  font-weight: 700;
+}
+
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 1s;
+  z-index: 10;
+  opacity: 1;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+.wordcloud {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
