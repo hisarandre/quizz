@@ -13,7 +13,7 @@ const CloudForm = () => {
     };
 
     try {
-      const response = await fetch(process.env.API_URL, {
+      const response = await fetch("https://crb-quizz.vercel.app/wordcloud", {
         method: "POST",
         headers,
         body: requestBody,
