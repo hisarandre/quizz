@@ -6,7 +6,7 @@ import CloudForm from "../components/CloudForm";
 import { useFetch } from "../services/useFetch";
 
 function Worldcloud() {
-  const urlApi = "http://localhost:3000/wordcloud";
+  const urlApi = process.env.API_URL;
   const data = useFetch(urlApi);
   var words;
 

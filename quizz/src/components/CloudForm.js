@@ -13,7 +13,7 @@ const CloudForm = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/wordcloud", {
+      const response = await fetch(process.env.API_URL, {
         method: "POST",
         headers,
         body: requestBody,
