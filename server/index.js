@@ -7,10 +7,8 @@ app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 3000;
-const reqOrigin = process.env.REQ_ORIGIN;
 
-// Use CORS middleware to allow requests from a specific origin (replace with your React app's origin)
-app.use(cors({ origin: reqOrigin }));
+app.use(cors());
 
 // Créez un client MongoDB
 const client = new MongoClient(uri, {
