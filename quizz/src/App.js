@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/flashcard" element={<Flashcard />} />
         <Route path="/wordcloud/secours" element={<Wordcloud endpoint="secours" />} />
-        <Route path="/wordcloud/integrite" element={<WordcloudComplex endpoint="integrite/1" />} />
+        <Route path="/wordcloud/integrite/*" element={<WordcloudComplex endpoint="integrite/1" />} />
       </Routes>
     </BrowserRouter>
   );

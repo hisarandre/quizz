@@ -5,7 +5,7 @@ import "tippy.js/animations/scale.css";
 import { useFetch } from "../services/useFetch";
 
 const Cloud = ({ endpoint }) => {
-  const urlApi = `https://crb-quizz.vercel.app/wordcloud/${endpoint}`;
+  const urlApi = `https://crb-quizz.vercel.app/${endpoint}`;
   const data = useFetch(urlApi);
   var words;
 

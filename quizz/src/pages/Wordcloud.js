@@ -40,7 +40,7 @@ function Wordcloud({ endpoint }) {
   return (
     <div className="wordcloud">
       <ReactWordcloud options={options} words={words} />
-      <CloudForm />
+      <CloudForm endpoint={endpoint} />
     </div>
   );
 }
