@@ -12,14 +12,15 @@ function Wordcloud({ endpoint }) {
   var words;
 
   if (data) {
-    words = data.map((item) => {
-      return {
-        text: item.word,
-        value: item.count,
-      };
-    });
-    console.log(words);
+    words = data.map((item) => ({
+      text: item.word,
+      value: item.count,
+    }));
+  } else {
+    words = []; // Ensure words is always an array
   }
+
+  console.log(words);
 
   const options = {
     colors: ["#ed1c24", "#9FD5D8", "#efabb8", "#ffcb78", "#9ec58c"],

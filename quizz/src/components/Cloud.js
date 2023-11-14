@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactWordcloud from "react-wordcloud";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import { useFetch } from "../services/useFetch";
 
 const Cloud = ({ endpoint }) => {
-  const urlApi = `https://crb-quizz.vercel.app/${endpoint}`;
+  const urlApi = `https://crb-quizz.vercel.app${endpoint}`;
   const data = useFetch(urlApi);
   var words;
 
   if (data) {
-    words = data.map((item) => {
-      return {
-        text: item.word,
-        value: item.count,
-      };
-    });
-    console.log(words);
+    words = data.map((item) => ({
+      text: item.word,
+      value: item.count,
+    }));
+  } else {
+    words = []; // Ensure words is always an array
   }
+
+  console.log(words);
 
   const options = {
     colors: ["#ed1c24", "#9FD5D8", "#efabb8", "#ffcb78", "#9ec58c"],

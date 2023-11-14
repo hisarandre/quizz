@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import Cloud from "react-wordcloud";
+import Cloud from "../components/Cloud";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 
 function WordcloudComplex() {
   const currentPath = window.location.pathname;
-
   const [response, setResponse] = useState("");
   const [hideForm, setHideForm] = useState(false);
 
@@ -19,7 +18,7 @@ function WordcloudComplex() {
     };
 
     try {
-      const response = await fetch(`https://crb-quizz.vercel.app/${currentPath}`, {
+      const response = await fetch(`https://crb-quizz.vercel.app${currentPath}`, {
         method: "POST",
         headers,
         body: requestBody,
@@ -39,6 +38,7 @@ function WordcloudComplex() {
 
   const renderComponent = () => {
     if (hideForm) {
+      console.log("hide form true");
       // If hideForm is true, return the ReactCloud component
       return <Cloud endpoint={currentPath} />;
     } else {
