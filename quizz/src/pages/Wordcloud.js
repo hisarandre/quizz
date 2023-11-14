@@ -5,8 +5,9 @@ import "tippy.js/animations/scale.css";
 import CloudForm from "../components/CloudForm";
 import { useFetch } from "../services/useFetch";
 
-function Worldcloud() {
-  const urlApi = "https://crb-quizz.vercel.app/wordcloud";
+function Wordcloud({ endpoint }) {
+  const urlApi = `https://crb-quizz.vercel.app/wordcloud/${endpoint}`;
+  console.log(urlApi);
   const data = useFetch(urlApi);
   var words;
 
@@ -44,4 +45,4 @@ function Worldcloud() {
   );
 }
 
-export default Worldcloud;
+export default Wordcloud;

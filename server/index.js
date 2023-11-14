@@ -26,18 +26,61 @@ async function connectToDatabase() {
 }
 
 // Endpoint GET pour obtenir les données du nuage de mots
-app.get("/wordcloud", async (req, res) => {
+app.get("/wordcloud/secours", async (req, res) => {
   const db = client.db("crbdb");
-  const collection = db.collection("words");
+  const collection = db.collection("secours_words");
+  const wordCloudData = await collection.find().toArray();
+  res.json(wordCloudData);
+});
+
+app.get("/wordcloud/integrite/1", async (req, res) => {
+  const db = client.db("crbdb");
+  const collection = db.collection("integrite_words_1");
+  const wordCloudData = await collection.find().toArray();
+  res.json(wordCloudData);
+});
+
+app.get("/wordcloud/integrite/2", async (req, res) => {
+  const db = client.db("crbdb");
+  const collection = db.collection("integrite_words_2");
+  const wordCloudData = await collection.find().toArray();
+  res.json(wordCloudData);
+});
+
+app.get("/wordcloud/integrite/3", async (req, res) => {
+  const db = client.db("crbdb");
+  const collection = db.collection("integrite_words_3");
   const wordCloudData = await collection.find().toArray();
   res.json(wordCloudData);
 });
 
 // Endpoint POST pour ajouter ou mettre à jour un mot
-app.post("/wordcloud", async (req, res) => {
+app.post("/wordcloud/secours", async (req, res) => {
   const { word } = req.body;
   const db = client.db("crbdb");
-  const collection = db.collection("words");
+  const collection = db.collection("secours_words");
+
+  try {
+    const existingWord = await collection.findOne({ word });
+
+    if (existingWord) {
+      await collection.updateOne({ word }, { $inc: { count: 1 } });
+    } else {
+      await collection.insertOne({ word, count: 1 });
+    }
+
+    res.json({ message: "Word added or updated successfully" });
+  } catch (error) {
+    console.error("Error processing the request:", error);
+    res.status(500).json({ error: "An error occurred while processing the request" });
+  }
+});
+
+// Endpoint POST pour ajouter ou mettre à jour un mot
+app.post("/wordcloud/2", async (req, res) => {
+  const { word } = req.body;
+  const db = client.db("crbdb");
+  const collection = db.collection("secours_words");
 
   try {
     const existingWord = await collection.findOne({ word });
