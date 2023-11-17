@@ -51,6 +51,7 @@ function WordcloudComplex() {
             type="text"
             id="response"
             required
+            autocomplete="off"
             value={response}
             onChange={(e) => setResponse(e.target.value)}
           />

@@ -51,7 +51,15 @@ const CloudForm = ({ endpoint }) => {
   return (
     <div>
       <label htmlFor="response"></label>
-      <input className="input-style-2 " type="text" id="response" required value={response} onChange={(e) => setResponse(e.target.value)} />
+      <input
+        className="input-style-2 "
+        autocomplete="off"
+        type="text"
+        id="response"
+        required
+        value={response}
+        onChange={(e) => setResponse(e.target.value)}
+      />
       <button className="button-red" onClick={handleSubmit}>
         Envoyer
       </button>
