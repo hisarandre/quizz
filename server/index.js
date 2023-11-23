@@ -142,6 +142,31 @@ app.post("/wordcloud/integrite/3", async (req, res) => {
   }
 });
 
+// Endpoint POST pour ajouter ou mettre à jour un mot
+app.post("/wordcloud/integrite/choice", async (req, res) => {
+  const { choices } = req.body; // Assuming 'choices' is an array of words
+  const db = client.db("crbdb");
+  const collection = db.collection("integrite_choices");
+
+  try {
+    // Iterate through each choice in the array
+    for (const choice of choices) {
+      const existingChoice = await collection.findOne({ word: choice });
+
+      if (existingChoice) {
+        await collection.updateOne({ word: choice }, { $inc: { count: 1 } });
+      } else {
+        await collection.insertOne({ word: choice, count: 1 });
+      }
+    }
+
+    res.json({ message: "Choices added or updated successfully" });
+  } catch (error) {
+    console.error("Error processing the request:", error);
+    res.status(500).json({ error: "An error occurred while processing the request" });
+  }
+});
+
 // Assurez-vous que la connexion à la base de données est établie avant de démarrer le serveur
 connectToDatabase().then(() => {
   app.listen(port, () => {
