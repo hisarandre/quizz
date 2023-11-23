@@ -54,6 +54,13 @@ app.get("/wordcloud/integrite/3", async (req, res) => {
   res.json(wordCloudData);
 });
 
+app.get("/wordcloud/integrite/choice", async (req, res) => {
+  const db = client.db("crbdb");
+  const collection = db.collection("integrite_choices");
+  const wordCloudData = await collection.find().toArray();
+  res.json(wordCloudData);
+});
+
 // Endpoint POST pour ajouter ou mettre à jour un mot
 app.post("/wordcloud/secours", async (req, res) => {
   const { word } = req.body;
