@@ -55,7 +55,7 @@ function WordcloudComplex() {
             value={response}
             onChange={(e) => setResponse(e.target.value)}
           />
-          <button className="button-red" onClick={handleSubmit}>
+          <button className="button-blue" onClick={handleSubmit}>
             Envoyer
           </button>
         </div>

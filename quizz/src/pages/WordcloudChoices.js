@@ -83,7 +83,7 @@ function WordcloudChoices() {
                 {option}
               </label>
             ))}
-            <button className="button-red" onClick={handleSubmit}>
+            <button className="button-blue" onClick={handleSubmit}>
               Envoyer
             </button>
           </div>

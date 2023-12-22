@@ -168,6 +168,18 @@ body,
   transition: transform 0.2s;
 }
 
+.button-blue {
+  padding: 10px 30px;
+  border: none;
+  background-color: #525fff;
+  color: white;
+  font-weight: 700;
+  margin: 10px 0 5px 0;
+  font-size: 20px;
+  transition: transform 0.2s;
+  grid-column: 2 / span 1;
+}
+
 :focus {
   outline: none; /* removes the default outline around the element when it receives focus */
 }
@@ -234,7 +246,7 @@ body,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 90%;
 }
 
 input[type="checkbox"] {
